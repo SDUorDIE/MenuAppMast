@@ -18,10 +18,16 @@ export const ManageWorkouts: React.FC<ManageWorkoutProps> = (props) => {
 
     const ExerciseType = ['Breakfast', 'Lunch', 'Dinner', 'Desert'];
 
-    const handleRemoval = useCallback((index: number) => {
-        const newWorkouts = [...props.route.params.workouts];
-        const [removedWorkout] = newWorkouts.splice(index, 1);
-        
+  const averagePrice = useMemo(() => {
+    if (props.route.params.workouts.length == 0) return 0;
+    const totalCalories = props.route.params.workouts.reduce((sum, workout) => sum + workout.calories, 0);
+    return Math.round(totalCalories / props.route.params.workouts.length);
+  }, [props.route.params.workouts]);
+
+  const handleRemoval = useCallback((index: number) => {
+    const newWorkouts = [...props.route.params.workouts];
+    const [removedWorkout] = newWorkouts.splice(index , 1); 
+  
         // Update workouts in route params
         props.route.params.setWorkOuts(newWorkouts);
         
@@ -145,3 +151,7 @@ export const ManageWorkouts: React.FC<ManageWorkoutProps> = (props) => {
         </View>
     );
 };
+
+function useMemo(arg0: () => number, arg1: any[]) {
+    throw new Error('Function not implemented.');
+}
