@@ -6,7 +6,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 
 import { styles } from '../styles/styles';
 import {
-    Text,
+    Text, 
     View,
     FlatList,
     TextInput,

@@ -47,11 +47,20 @@ export const ManageWorkouts: React.FC<ManageWorkoutProps> = (props) => {
             <Text style={styles.otherDetails}>coures: {item.exercise_Type}</Text>
             <Text style={styles.otherDetails}>price: {item.calories}</Text>
             <TouchableOpacity
-                style={styles.button}
-                onPress={() => handleRemoval(index)}
-            >
-                <Text style={styles.buttonText}>Remove Meal</Text>
-            </TouchableOpacity>
+  style={styles.button}
+  onPress={() => {
+    Alert.alert(
+      "Remove Meal",
+      "Are you sure you want to remove this meal?",
+      [
+        { text: "Cancel" },
+        { text: "OK", onPress: () => handleRemoval(index) },
+      ]
+    );
+  }}
+>
+  <Text style={styles.buttonText}>Remove Meal</Text>
+</TouchableOpacity>
         </View>
     ), [handleRemoval]);
 
@@ -86,7 +95,7 @@ export const ManageWorkouts: React.FC<ManageWorkoutProps> = (props) => {
             );
         } else {
             Alert.alert(
-                "Incorrect Information",
+                "Invalid Information",
                 "Please fill in all fields before adding a Meal",
                 [{ text: "OK" }]
             );
@@ -108,7 +117,7 @@ export const ManageWorkouts: React.FC<ManageWorkoutProps> = (props) => {
 
                 <TextInput 
                     style={styles.input}
-                    placeholder='Expected Prep-Time (min)'
+                    placeholder='Estimated Prep-Time (min)'
                     value={duration}
                     onChangeText={setDuration}
                     keyboardType="numeric"
@@ -138,7 +147,13 @@ export const ManageWorkouts: React.FC<ManageWorkoutProps> = (props) => {
                 </TouchableHighlight>
             </ScrollView>
 
-            {/* Workout List Section */}
+             
+            <View style={homeStyles.summaryBox}>
+             <Text style={homeStyles.summaryTitle}>Average Price</Text>
+             <Text style={homeStyles.summaryText}>R {averagePrice}</Text>
+            </View>
+
+            
             <View style={{ flex: 1 }}>
                 <Text style={[homeStyles.heading, { marginTop: 20 }]}>Current Meals</Text>
                 <FlatList

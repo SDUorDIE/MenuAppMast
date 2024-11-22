@@ -2,7 +2,7 @@ import React, { useState, useCallback, useMemo } from 'react';
 import { Text, View, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
 import { NativeStackScreenProps } from '@react-navigation/native-stack';
 import { RootStackParamList, WorkOutDetails } from '../types';
-import { styles } from '../styles/home';
+import { homestyle as styles } from '../styles/homestyle';
 
 type HomeScreenProp = NativeStackScreenProps<RootStackParamList, 'HomeScreen'>;
 
