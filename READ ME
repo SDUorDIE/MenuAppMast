@@ -1,0 +1,7 @@
+changes:
+Added the following screens- home screen.tsx, filter screen.tsx, managedish.tsx
+changed the design by adding a new primary color and changing the background color 
+Added new buttons 
+Added new error handiling messages
+added a homescreen design(specifically for the home screen.tsx
+                          
